@@ -44,58 +44,58 @@ function create() {
     //player dude
     player = this.physics.add.sprite(100, 450, 'dude'); 
 
-    // player.setBounce(0);
-    // player.body.setGravityY(300);
-    // player.setCollideWorldBounds(true);
+    player.setBounce(0);
+    player.body.setGravityY(300);
+    player.setCollideWorldBounds(true);
 
-    // this.anims.create({
-    //     key: 'left',
-    //     frames: this.anims.generateFrameNumbers('dude', { start: 9, end: 17 }),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('dude', { start: 9, end: 17 }),
+        frameRate: 10,
+        repeat: -1
+    });
 
-    // this.anims.create({
-    //     key: 'right',
-    //     frames: this.anims.generateFrameNumbers('dude', { start: 27, end: 35 }),
-    //     frameRate: 10,
-    //     repeat: -1
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('dude', { start: 27, end: 35 }),
+        frameRate: 10,
+        repeat: -1
 
-    // });
+    });
 
-    // this.anims.create({
-    //     key: 'stand',
-    //     frames: [ { key: 'dude', frame: 22 } ],
-    //     frameRate: 20,
-    // });
+    this.anims.create({
+        key: 'stand',
+        frames: [ { key: 'dude', frame: 22 } ],
+        frameRate: 20,
+    });
     
-    // //platform collisions
-    // this.physics.add.collider(player, platforms);
+    //platform collisions
+    this.physics.add.collider(player, platforms);
 
-    // //movements
-    // cursors = this.input.keyboard.createCursorKeys();
+    //movements
+    cursors = this.input.keyboard.createCursorKeys();
 }
 
 
 function update() {
-    // // //player moves
-    // if (cursors.left.isDown) {
-    //     player.setVelocityX(-160);
+    // //player moves
+    if (cursors.left.isDown) {
+        player.setVelocityX(-160);
 
-    //     player.anims.play('left', true);
-    // }
-    // else if (cursors.right.isDown) {
-    //     player.setVelocityX(160);
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown) {
+        player.setVelocityX(160);
 
-    //     player.anims.play('right', true);
-    // }
+        player.anims.play('right', true);
+    }
 
-    // else {
-    //     player.setVelocityX(0);
-    //     player.anims.play('stand', true);
-    // }
+    else {
+        player.setVelocityX(0);
+        player.anims.play('stand', true);
+    }
 
-    // if (cursors.up.isDown && player.body.touching.down) {
-    //     player.setVelocityY(-330);
-    // }
+    if (cursors.up.isDown && player.body.touching.down) {
+        player.setVelocityY(-330);
+    }
 }
