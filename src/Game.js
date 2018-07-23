@@ -21,14 +21,6 @@ export class Game extends phaser.Scene {
     init() {
         
     }
-
-    preload() {
-        this.load.image('ground', 'assets/images/gay-gr.jpg');
-        this.load.spritesheet('dude', 'assets/images/BODY_skeleton.png', {
-            frameWidth: 64,
-            frameHeight: 64 
-        });
-    }
     
     create() {
         //map
@@ -42,7 +34,7 @@ export class Game extends phaser.Scene {
         this.player = this.physics.add.sprite(100, 450, 'dude');
 
         this.player.setBounce(0);
-        this.player.body.setGravityY(300);
+        this.player.body.setGravityY(600);
         this.player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -75,7 +67,7 @@ export class Game extends phaser.Scene {
 
 
     update() {
-        // //this.player moves
+        // PLAYER
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160);
 
@@ -89,6 +81,7 @@ export class Game extends phaser.Scene {
 
         else {
             this.player.setVelocityX(0);
+
             this.player.anims.play('stand', true);
         }
 
