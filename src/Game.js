@@ -19,7 +19,9 @@ export class Game extends phaser.Scene {
     }
 
     init() {
-        
+        console.log(this);
+        this.canvasHeight = this.data.systems.canvas.height;
+        this.canvasWidth = this.data.systems.canvas.width;
     }
     
     create() {
@@ -27,11 +29,11 @@ export class Game extends phaser.Scene {
         this.platforms = this.physics.add.staticGroup();
 
         for (let i = 0; i < 18; i++) {
-            this.platforms.create(i * 50, 570, 'ground');
+            this.platforms.create(i * 50, this.canvasHeight, 'ground');
         }
 
         //this.player dude
-        this.player = this.physics.add.sprite(100, 450, 'dude');
+        this.player = this.physics.add.sprite(100, 10, 'dude');
 
         this.player.setBounce(0);
         this.player.body.setGravityY(600);
