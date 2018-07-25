@@ -54,41 +54,22 @@ export class Game extends phaser.Scene {
 
         //movements
         this.cursors = this.input.keyboard.createCursorKeys();
-
-        console.log(this.player);
     }
 
 
     update() {
         // PLAYER
-        if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown) {
-            if (this.cursors.left.isDown) {
-                this.player.setVelocityX(-160);
-
-                this.player.anims.play('left', true);
-            }
-            if (this.cursors.right.isDown) {
-                this.player.setVelocityX(160);
-
-                this.player.anims.play('right', true);
-            }
-
-            if (this.cursors.up.isDown) {
-                this.player.setVelocityY(-160);
-            }
-
-            if (this.cursors.down.isDown) {
-                this.player.setVelocityY(160);
-            }
-
+        if (this.cursors.up.isDown) {
+            this.player.y -= 5;
         }
-
-        else {
-            this.player.setVelocityX(0);
-            this.player.setVelocityY(0);
-
-            this.player.anims.play('stand', true);
+        if (this.cursors.down.isDown) {
+            this.player.y += 5;
         }
-
+        if (this.cursors.left.isDown) {
+            this.player.x -= 5;
+        }
+        if (this.cursors.right.isDown) {
+            this.player.x += 5;
+        }
     }
 }
