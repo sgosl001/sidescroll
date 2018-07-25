@@ -1,4 +1,5 @@
 import phaser from 'phaser';
+import Enemy from './Enemy';
 
 export class Game extends phaser.Scene {
     constructor() {
@@ -18,12 +19,13 @@ export class Game extends phaser.Scene {
     }
 
     init() {
-        console.log(this);
+        this.game = this.sys.game;
         this.canvasHeight = this.data.systems.canvas.height;
         this.canvasWidth = this.data.systems.canvas.width;
     }
 
     create() {
+        console.log(this.game);
         //this.player dude
         this.player = this.physics.add.sprite(100, 10, 'dude').setScale(3);
 
@@ -68,6 +70,9 @@ export class Game extends phaser.Scene {
 
         //movements
         this.cursors = this.input.keyboard.createCursorKeys();
+
+        //enemy
+        const enemyOne = new Enemy(0, this.physics, 10, 10);
     }
 
 

@@ -12,6 +12,8 @@ export class Preloader extends phaser.Scene {
             frameWidth: 16,
             frameHeight: 18 
         });
+
+        this.load.image('enemy', 'assets/images/gay-gr.jpg');
     }
 
     create() {
