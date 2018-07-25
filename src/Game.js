@@ -48,14 +48,14 @@ export class Game extends phaser.Scene {
 
         this.anims.create({
             key: 'down',
-            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 2}),
+            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'up',
-            frames: this.anims.generateFrameNumbers('dude', {start: 3, end: 5}),
+            frames: this.anims.generateFrameNumbers('dude', { start: 3, end: 5 }),
             frameRate: 10,
             repeat: -1
         });
@@ -77,21 +77,48 @@ export class Game extends phaser.Scene {
             this.player.anims.play('stand', true);
         }
 
-        if (this.cursors.up.isDown) {
+        else if (this.cursors.up.isDown) {
             this.player.y -= 5;
             this.player.anims.play('up', true);
         }
-        if (this.cursors.down.isDown) {
+
+        else if (this.cursors.down.isDown) {
             this.player.y += 5;
             this.player.anims.play('down', true);
         }
-        if (this.cursors.left.isDown) {
+
+        else if (this.cursors.left.isDown) {
             this.player.x -= 5;
             this.player.anims.play('left', true);
         }
-        if (this.cursors.right.isDown) {
+
+        else if (this.cursors.right.isDown) {
             this.player.x += 5;
             this.player.anims.play('right', true);
         }
+
+        if (this.cursors.up.isDown && this.cursors.left.isDown) {
+            this.player.x -= 5;
+            this.player.anims.play('up', true);
+        }
+
+        if (this.cursors.up.isDown && this.cursors.right.isDown) {
+            this.player.x += 5;
+            this.player.anims.play('up', true);
+        }
+
+        if (this.cursors.down.isDown && this.cursors.left.isDown) {
+            this.player.x -= 5;
+            this.player.anims.play('down', true);
+        }
+
+        if (this.cursors.down.isDown && this.cursors.right.isDown) {
+            this.player.x += 5;
+            this.player.anims.play('down', true);
+        }
+
+
+
+
     }
 }
