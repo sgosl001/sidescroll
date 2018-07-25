@@ -25,7 +25,7 @@ export class Game extends phaser.Scene {
 
     create() {
         //this.player dude
-        this.player = this.physics.add.sprite(100, 10, 'dude');
+        this.player = this.physics.add.sprite(100, 10, 'dude').setScale(3);
 
         this.player.setBounce(0);
         this.player.body.setGravityY(0);
@@ -78,19 +78,19 @@ export class Game extends phaser.Scene {
         }
 
         if (this.cursors.up.isDown) {
-            this.player.y -= 1;
+            this.player.y -= 5;
             this.player.anims.play('up', true);
         }
         if (this.cursors.down.isDown) {
-            this.player.y += 1;
+            this.player.y += 5;
             this.player.anims.play('down', true);
         }
         if (this.cursors.left.isDown) {
-            this.player.x -= 1;
+            this.player.x -= 5;
             this.player.anims.play('left', true);
         }
         if (this.cursors.right.isDown) {
-            this.player.x += 1;
+            this.player.x += 5;
             this.player.anims.play('right', true);
         }
     }
