@@ -8,7 +8,6 @@ export class Preloader extends phaser.Scene {
     }
       
     preload() {
-        this.load.image('ground', 'assets/images/gay-gr.jpg');
         this.load.spritesheet('dude', 'assets/images/BODY_skeleton.png', {
             frameWidth: 64,
             frameHeight: 64 

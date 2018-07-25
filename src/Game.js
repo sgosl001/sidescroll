@@ -7,13 +7,12 @@ export class Game extends phaser.Scene {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 300 },
+                    gravity: { y: 0 },
                     debug: false
                 }
             },
         });
 
-        this.platforms = null;
         this.player = null;
         this.cursors = null;
     }
@@ -23,20 +22,13 @@ export class Game extends phaser.Scene {
         this.canvasHeight = this.data.systems.canvas.height;
         this.canvasWidth = this.data.systems.canvas.width;
     }
-    
+
     create() {
-        //map
-        this.platforms = this.physics.add.staticGroup();
-
-        for (let i = 0; i < 18; i++) {
-            this.platforms.create(i * 50, this.canvasHeight, 'ground');
-        }
-
         //this.player dude
         this.player = this.physics.add.sprite(100, 10, 'dude');
 
         this.player.setBounce(0);
-        this.player.body.setGravityY(600);
+        this.player.body.setGravityY(0);
         this.player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -44,7 +36,7 @@ export class Game extends phaser.Scene {
             frames: this.anims.generateFrameNumbers('dude', { start: 9, end: 17 }),
             frameRate: 10,
             repeat: -1
-        }); 
+        });
 
         this.anims.create({
             key: 'right',
@@ -60,35 +52,43 @@ export class Game extends phaser.Scene {
             frameRate: 20,
         });
 
-        //platform collisions
-        this.physics.add.collider(this.player, this.platforms);
-
         //movements
         this.cursors = this.input.keyboard.createCursorKeys();
+
+        console.log(this.player);
     }
 
 
     update() {
         // PLAYER
-        if (this.cursors.left.isDown) {
-            this.player.setVelocityX(-160);
+        if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown) {
+            if (this.cursors.left.isDown) {
+                this.player.setVelocityX(-160);
 
-            this.player.anims.play('left', true);
-        }
-        else if (this.cursors.right.isDown) {
-            this.player.setVelocityX(160);
+                this.player.anims.play('left', true);
+            }
+            if (this.cursors.right.isDown) {
+                this.player.setVelocityX(160);
 
-            this.player.anims.play('right', true);
+                this.player.anims.play('right', true);
+            }
+
+            if (this.cursors.up.isDown) {
+                this.player.setVelocityY(-160);
+            }
+
+            if (this.cursors.down.isDown) {
+                this.player.setVelocityY(160);
+            }
+
         }
 
         else {
             this.player.setVelocityX(0);
+            this.player.setVelocityY(0);
 
             this.player.anims.play('stand', true);
         }
 
-        if (this.cursors.up.isDown && this.player.body.touching.down) {
-            this.player.setVelocityY(-330);
-        }
     }
 }

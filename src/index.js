@@ -4,8 +4,8 @@ import { Game } from './Game';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     parent: 'content',
     scene: [
         Preloader,
