@@ -1,4 +1,8 @@
 class Player extends Phaser.Physics.Arcade.Sprite {
+	/**
+	 * The key parameter should be a spritesheet name from spritesheets loaded in 
+	 * the preload() function in the scene. (src/scenes/Game.js)
+	 */
 	constructor(scene, x, y, key) {
 		super(scene, x, y, key);
 		this.scene = scene;
