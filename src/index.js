@@ -9,12 +9,10 @@ const config = {
 	physics: {
 		default: 'arcade',
 		arcade: {
-			debug: true
+			debug: true // Setting this property to true makes the hit boxes show up
 		}
 	},
-	scene: [
-			Game
-	]
+	scene: [Game] // Add more scenes to this array if we want to
 };
 
 const game = new phaser.Game(config);

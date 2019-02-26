@@ -4,8 +4,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 		this.scene = scene;
 
 		// Stuff required to add this to the scene
-		//scene.sys.updateList.add(this);
-		//scene.sys.displayList.add(this);
+		scene.sys.updateList.add(this);
+		scene.sys.displayList.add(this);
 		scene.physics.world.enableBody(this);
 
 		// Our stuff

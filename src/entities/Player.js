@@ -14,7 +14,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 		this.setImmovable(true);
 		this.VELOCITY = 128;
 
-		// Setting up animations from the spritesheet
+		// Setting up animations from the spritesheet in assets/images
 		scene.anims.create({
 				key: 'left',
 				frames: scene.anims.generateFrameNumbers('player', { start: 6, end: 8 }),
@@ -43,6 +43,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 		});
 	}
 
+	// Add keyboard parameter - Expect keyboard object to be passed to this function
 	update(keyboard) {
 		// Movement
 		if (keyboard.W.isDown) {

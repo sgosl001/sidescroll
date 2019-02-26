@@ -2,13 +2,19 @@ import phaser from 'phaser';
 import Game from './scenes/Game';
 
 const config = {
-    type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
-    parent: 'content',
-    scene: [
-        Game
-    ]
+	type: Phaser.AUTO,
+	width: window.innerWidth,
+	height: window.innerHeight,
+	parent: 'content',
+	physics: {
+		default: 'arcade',
+		arcade: {
+			debug: true // Setting this property to true makes the hit boxes show up
+		}
+	},
+	scene: [
+			Game
+	]
 };
 
 const game = new phaser.Game(config);
