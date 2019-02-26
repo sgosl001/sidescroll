@@ -12,7 +12,9 @@ const config = {
 			debug: true // Setting this property to true makes the hit boxes show up
 		}
 	},
-	scene: [Game] // Add more scenes to this array if we want to
+	scene: [
+			Game
+	]
 };
 
 const game = new phaser.Game(config);
