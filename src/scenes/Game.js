@@ -24,14 +24,19 @@ class Game extends Phaser.Scene {
 		// Enable input for the WASD
 		this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 		
-		// Entities
+		// Create a new Player entity  
 		this.player = new Player(this, 200, 200, 'player');
-		//this.enemy = new Enemy(this, 500, 200, 'dino');
-		this.enemies = this.physics.add.group();
 
-		// Add a new emeny at a random position every 3 seconds
+		// This would add a single enemy 
+		//this.enemy = new Enemy(this, 500, 200, 'dino');
+
+		// Create a new group and make sure they can't collide with eachother
+		this.enemies = this.physics.add.group({ immovable: true });
+
+		// Add a new emeny to the enemies group  at a random X,Y position every 3 seconds (3000 milliseconds)
 		setInterval(() => {
 			if (this.enemies.getLength() <= 10) {
+				// Generate random numbers with max value of screen width/height
 				const x = Math.random() * window.innerWidth;
 				const y = Math.random() * window.innerHeight;
 				this.enemies.add(new Enemy(this, x, y, 'dino'));
@@ -39,7 +44,11 @@ class Game extends Phaser.Scene {
 		}, 3000);	
 	}
 
-	update(time, delta) {
+	update() {
+		/**
+		 * Pass the keyboard object created at line 7 so that
+		 * we could handle keyboard input from the Player update function
+		 */
 		this.player.update(this.keyboard);
 
 		// Loop through array of enemies and call each one's update function

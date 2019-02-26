@@ -27,7 +27,7 @@ class Game extends Phaser.Scene {
 		// Entities
 		this.player = new Player(this, 200, 200, 'player');
 		//this.enemy = new Enemy(this, 500, 200, 'dino');
-		this.enemies = this.physics.add.group({ immovable: true });
+		this.enemies = this.physics.add.group();
 
 		// Add a new emeny at a random position every 3 seconds
 		setInterval(() => {

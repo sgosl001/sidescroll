@@ -8,7 +8,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 		scene.physics.world.enableBody(this);
 		this.setScale(3);
 		this.setCollideWorldBounds(true);
-		//this.setImmovable(true);
+		this.setImmovable(true);
 
 		// Call the provided function when this collides with player
 		scene.physics.world.addCollider(this, scene.player, () => {
