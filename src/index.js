@@ -9,7 +9,7 @@ const config = {
 	physics: {
 		default: 'arcade',
 		arcade: {
-			debug: true // Setting this property to true makes the hit boxes show up
+			debug: false // Setting this property to true makes the hit boxes show up
 		}
 	},
 	scene: [Game] // Add more scenes to this array if we want to
